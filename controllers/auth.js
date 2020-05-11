@@ -1,4 +1,14 @@
 const bcrypt = require('bcryptjs');
+// const nodemailer = require('nodemailer');
+// const sendgridTransport = require('nodemailer-sendgrid-transport');
+
+// const transporter = nodemailer.createTransport(
+// 	sendgridTransport({
+// 		auth: {
+// 			//api_key : SEND GRID API KEY,
+// 		},
+// 	})
+// );
 
 const User = require('../models/user');
 
@@ -89,6 +99,18 @@ exports.postSignup = (req, res, next) => {
 				})
 				.then(result => {
 					res.redirect('/login');
+
+					// SHOULD BE ADDED
+
+					// return transporter.sendMail({
+					// 	to: email,
+					// 	sender: 'smcbsachin@gmail.com',
+					// 	subject: 'Welcome onboard!!',
+					// 	html: '<h1>Congradulations on taking up this course</h1>',
+					// });
+				})
+				.catch(err => {
+					console.log(err);
 				});
 		})
 		.catch(err => {
