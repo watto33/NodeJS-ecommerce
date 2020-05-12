@@ -1,17 +1,16 @@
 const crypto = require('crypto');
 
 const bcrypt = require('bcryptjs');
-const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
+// const nodemailer = require('nodemailer');
+// const sendgridTransport = require('nodemailer-sendgrid-transport');
 
-const transporter = nodemailer.createTransport(
-	sendgridTransport({
-		auth: {
-			api_key:
-				'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',
-		},
-	})
-);
+// const transporter = nodemailer.createTransport(
+// 	sendgridTransport({
+// 		auth: {
+// 			api_key: SENDGRID API KEY
+// 		},
+// 	})
+// );
 
 const User = require('../models/user');
 const { use } = require('../routes/auth');
@@ -109,7 +108,7 @@ exports.postSignup = (req, res, next) => {
 
 					// return transporter.sendMail({
 					// 	to: email,
-					// 	sender: 'smcbsachin@gmail.com',
+					// 	sender: your mail,
 					// 	subject: 'Welcome onboard!!',
 					// 	html: '<h1>Congradulations on taking up this course</h1>',
 					// });
@@ -163,15 +162,15 @@ exports.postReset = (req, res, next) => {
 			})
 			.then(result => {
 				res.redirect('/');
-				transporter.sendMail({
-					to: req.body.email,
-					sender: 'smcbsachin@gmail.com',
-					subject: 'Reset Password',
-					html: `
-					<p>You requested a password reset</p>
-					<p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password
-				`,
-				});
+				// transporter.sendMail({
+				// 	to: req.body.email,
+				// 	sender: your mail,
+				// 	subject: 'Reset Password',
+				// 	html: `
+				// 	<p>You requested a password reset</p>
+				// 	<p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password
+				// `,
+				// });
 			})
 			.catch(err => {
 				console.log(err);
